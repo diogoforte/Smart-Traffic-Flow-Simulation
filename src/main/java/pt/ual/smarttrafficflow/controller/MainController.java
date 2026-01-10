@@ -1,14 +1,24 @@
 package pt.ual.smarttrafficflow.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.canvas.Canvas;
+import pt.ual.smarttrafficflow.model.World;
 
 public class MainController {
-    @FXML
-    private Label welcomeText;
+    private World world;
+    private SimulationController simController;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private Canvas mainCanvas;
+
+    public void initialize() {
+        this.world = new World();
+        this.simController = new SimulationController(world);
+        // Aqui vais configurar o AnimationTimer para o desenho
+    }
+
+    @FXML
+    protected void onStartStopClick() {
+        simController.togglePause();
     }
 }
