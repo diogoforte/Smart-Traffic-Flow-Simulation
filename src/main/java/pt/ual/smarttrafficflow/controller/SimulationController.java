@@ -2,26 +2,24 @@ package pt.ual.smarttrafficflow.controller;
 
 import pt.ual.smarttrafficflow.model.World;
 
+// Controla o fluxo lógico da simulação (pausa, velocidade, atualizações)
 public class SimulationController {
-    private World world;
-    private boolean running = true; // Começar a correr por defeito
+    private final World world;
     private double timeScale = 1.0;
 
     public SimulationController(World world) {
         this.world = world;
     }
 
-    // Corrigido: Agora aceita o mapData para passar ao world.tick
+    // Atualiza o estado do mundo se a simulação não estiver pausada
     public void update(double deltaTime, char[][] mapData) {
-        if (running && mapData != null) {
+        if (mapData != null) {
             world.tick(deltaTime * timeScale, mapData);
         }
     }
 
-    public void togglePause() { this.running = !this.running; }
-    public void setTimeScale(double scale) { this.timeScale = scale; }
-
-    public void reset(World newWorld) {
-        this.world = newWorld;
+    // Define a escala de tempo (ex: 2.0 para velocidade dupla)
+    public void setTimeScale(double scale) {
+        this.timeScale = scale;
     }
 }

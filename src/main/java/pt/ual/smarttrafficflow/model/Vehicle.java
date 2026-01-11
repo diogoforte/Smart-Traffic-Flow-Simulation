@@ -1,34 +1,32 @@
 package pt.ual.smarttrafficflow.model;
 
 import pt.ual.smarttrafficflow.util.Config;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Vehicle {
-    private final String id;
-    private double x, y;
-    private double speed;
-    private Direction dir;
+    private final double speed;
     private final int TILE = Config.TILE_SIZE;
     private final double width = 30, height = 15;
     private final String colorHex;
     private final boolean ignoresLights;
     private final Random rnd = new Random();
-
+    private double x, y;
+    private Direction dir;
     private double vX, vY, vAngle;
     private int lastCrossingX = -1;
     private int lastCrossingY = -1;
 
-    public Vehicle(String id, double x, double y, double speed, Direction dir, String colorHex, boolean ignoresLights) {
-        this.id = id;
+    public Vehicle(double x, double y, double speed, Direction dir, String colorHex, boolean ignoresLights) {
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.dir = dir;
         this.colorHex = colorHex;
         this.ignoresLights = ignoresLights;
-        alignToTileLane((int)(x / TILE), (int)(y / TILE), dir);
+        alignToTileLane((int) (x / TILE), (int) (y / TILE), dir);
         this.vX = this.x;
         this.vY = this.y;
         this.vAngle = getTargetAngle(dir);
@@ -128,7 +126,7 @@ public class Vehicle {
                     }
                 } else {
                     if (!forwardOptions.contains(dir)) {
-                        this.dir = forwardOptions.get(0);
+                        this.dir = forwardOptions.getFirst();
                         alignToTileLane(col, row, this.dir);
                     }
                     lastCrossingX = -1;
@@ -153,8 +151,10 @@ public class Vehicle {
 
         double maxX = map[0].length * TILE - this.width;
         double maxY = map.length * TILE - this.height;
-        if (x < 0) x = 0; if (y < 0) y = 0;
-        if (x > maxX) x = maxX; if (y > maxY) y = maxY;
+        if (x < 0) x = 0;
+        if (y < 0) y = 0;
+        if (x > maxX) x = maxX;
+        if (y > maxY) y = maxY;
     }
 
     private List<Direction> availableDirectionsFromTile(int gx, int gy, char[][] map) {
@@ -179,14 +179,31 @@ public class Vehicle {
         }
     }
 
-    public double getX() { return x; }
-    public double getY() { return y; }
-    public double getVX() { return vX; }
-    public double getVY() { return vY; }
-    public double getVAngle() { return vAngle; }
-    public double getWidth() { return width; }
-    public double getHeight() { return height; }
-    public String getColorHex() { return colorHex; }
-    public Direction getDirection() { return dir; }
-    public boolean isIgnoresLights() { return ignoresLights; }
+    public double getVX() {
+        return vX;
+    }
+
+    public double getVY() {
+        return vY;
+    }
+
+    public double getVAngle() {
+        return vAngle;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public String getColorHex() {
+        return colorHex;
+    }
+
+    public boolean isIgnoresLights() {
+        return ignoresLights;
+    }
 }

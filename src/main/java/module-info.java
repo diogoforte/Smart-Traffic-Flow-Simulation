@@ -1,6 +1,6 @@
 module pt.ual.smarttrafficflow {
     requires javafx.controls;
-    requires javafx.fxml;
+    requires java.logging;
 
 
     opens pt.ual.smarttrafficflow to javafx.fxml;

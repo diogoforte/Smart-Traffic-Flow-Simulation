@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class World {
-    private List<Vehicle> vehicles = new ArrayList<>();
-    private List<TrafficLight> lights = new ArrayList<>();
+    private final List<Vehicle> vehicles = new ArrayList<>();
+    private final List<TrafficLight> lights = new ArrayList<>();
 
     // O tick agora recebe o mapa 'char[][] map'
     public void tick(double deltaTime, char[][] map) {
@@ -18,8 +18,19 @@ public class World {
         }
     }
 
-    public void addVehicle(Vehicle v) { vehicles.add(v); }
-    public void addLight(TrafficLight l) { lights.add(l); }
-    public List<Vehicle> getVehicles() { return vehicles; }
-    public List<TrafficLight> getLights() { return lights; }
+    public void addVehicle(Vehicle v) {
+        vehicles.add(v);
+    }
+
+    public void addLight(TrafficLight l) {
+        lights.add(l);
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public List<TrafficLight> getLights() {
+        return lights;
+    }
 }
