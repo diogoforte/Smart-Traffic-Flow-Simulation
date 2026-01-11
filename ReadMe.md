@@ -1,7 +1,7 @@
 ```
 Unidade Curricular: Aplicação Bases de Dados
 Curso: Engenharia informática
-Ano Letivo: 2025/
+Ano Letivo: 2025/2026
 ```
 **Relatório Smart Traffic Flow**
 
@@ -9,7 +9,7 @@ Ano Letivo: 2025/
 
 ```
 Trabalho realizado por:
-Diogo Forte nº 30014 529
+Diogo Forte nº 30014529
 Gustavo Caetano nº 30015026
 Martim Mello nº300 15349
 ```
@@ -18,13 +18,13 @@ Martim Mello nº300 15349
 
 - Introdução
 - Arquitetura do Sistema
-    - Model
-    - Controller
-    - View
+  - Model
+  - Controller
+  - View
 - Patterns Usados
-    - Strategy Pattern
-    - State Pattern
-    - Model-View-Controller
+  - Strategy Pattern
+  - State Pattern
+  - Model-View-Controller
 - Estratégias de Testes
 - Resultados Principais
 - Conclusão
@@ -112,15 +112,6 @@ combinando a verificação da lógica de negócio com testes de integração dos
 padrões de desenho e validação funcional da interface gráfica. Realizamos testes
 demovimentos e colisões e de integração de padrões.
 
-
-## Resultados Principais
-
-```
-MAPA 1
-```
-```
-MAPA 2
-```
 **MODELO MVC**
 
 
